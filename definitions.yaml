@@ -1,0 +1,168 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /customer/:
+    get:
+      operationId: listCustomers
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+          description: ''
+      tags:
+      - customer
+    post:
+      operationId: createCustomer
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          description: ''
+      tags:
+      - customer
+  /customer/{customer_id}/:
+    get:
+      operationId: retrieveCustomer
+      description: ''
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        description: A unique integer value identifying this customer.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          description: ''
+      tags:
+      - customer
+    put:
+      operationId: updateCustomer
+      description: ''
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        description: A unique integer value identifying this customer.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          description: ''
+      tags:
+      - customer
+    patch:
+      operationId: partialUpdateCustomer
+      description: ''
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        description: A unique integer value identifying this customer.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          description: ''
+      tags:
+      - customer
+    delete:
+      operationId: destroyCustomer
+      description: ''
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        description: A unique integer value identifying this customer.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - customer
+  /customer/{customer_id}/get_customer_order/:
+    get:
+      operationId: getCustomerOrderCustomer
+      description: ''
+      parameters:
+      - name: customer_id
+        in: path
+        required: true
+        description: A unique integer value identifying this customer.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          description: ''
+      tags:
+      - customer
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        customer_id:
+          type: integer
+          readOnly: true
