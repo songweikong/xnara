@@ -18,7 +18,8 @@ class Customer(models.Model):
     # assumption: customer_id is unique in the pack1 and pack2 apis, so there is 1 or 0 pack data for each customer
     def get_order(self):
         # get data from two apis
-        pack1 = requests.get("https://6466e9a7ba7110b663ab51f2.mockapi.io/api/v1/pack1")
+        pack1 = requests.get("https://6466e9a7ba7110b663ab51f2.mockapi.io/api/v1/pack1").json()
+
         # loop through pack 1 data to get order to get order based on customer_id
         for data in pack1:
             if data['customer_id'] == self.customer_id:
@@ -26,7 +27,7 @@ class Customer(models.Model):
                 # stop loop if order is found
                 break
 
-        pack2 = requests.get("https://6466e9a7ba7110b663ab51f2.mockapi.io/api/v1/pack2")
+        pack2 = requests.get("https://6466e9a7ba7110b663ab51f2.mockapi.io/api/v1/pack2").json()
         # loop through pack 2 data to get order to get order based on customer_id
         for data in pack2:
             if data['customer_id'] == self.customer_id:

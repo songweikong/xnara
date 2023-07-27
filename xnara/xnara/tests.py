@@ -1,4 +1,4 @@
-from django.test import TestCase
+from rest_framework.test import APITestCase
 from requests import patch
 
 from xnara.xnara.models import Customer
@@ -7,7 +7,7 @@ from xnara.xnara.models import Customer
 
 
 # unit test for customer model
-class CustomerModelTest(TestCase):
+class CustomerModelTest(APITestCase):
     customer_id = 101
 
     mocked_pack1_data = [{"customer_id":101,"pack_data":[{"ingredient":"Calcium carbonate","inventory_code":"MINCAC","quantity":40,"unit":"mg"},{"ingredient":"Ferric pyrophosphate","inventory_code":"MINFEP","quantity":15.6,"unit":"mg"},{"ingredient":"Biotin (B7)","inventory_code":"VITB7","quantity":30,"unit":"mcg"}],"id":"1"},{"customer_id":102,"pack_data":[{"ingredient":"Tocopherol as Vitamin E Acetate","inventory_code":"VITET","quantity":10.4,"unit":"mg"},{"ingredient":"Vitamin D as Ergocalciferol","inventory_code":"VITDE","quantity":15,"unit":"mcg"}],"id":"2"},{"customer_id":103,"pack_data":[{"ingredient":"Calcium carbonate","inventory_code":"MINCAC","quantity":40,"unit":"mg"},{"ingredient":"Ferric pyrophosphate","inventory_code":"MINFEP","quantity":10.2,"unit":"mg"},{"ingredient":"Biotin (B7)","inventory_code":"VITB7","quantity":30,"unit":"mcg"}],"id":"3"},{"customer_id":104,"pack_data":[{"ingredient":"Tocopherol as Vitamin E Acetate","inventory_code":"VITET","quantity":10.4,"unit":"mg"},{"ingredient":"Vitamin D as Ergocalciferol","inventory_code":"VITDE","quantity":15,"unit":"mcg"}],"id":"4"}]
@@ -44,7 +44,3 @@ class CustomerModelTest(TestCase):
             self.assertEqual(data['pack1'], customer.p1)
             self.assertEqual(data['pack2'], customer.p2)
             self.assertEqual(data['id'], customer.p1['id'])
-
-# test for CustomerViewSet
-class CustomerViewSetTest(TestCase):
-    customer_id = 101

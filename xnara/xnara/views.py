@@ -23,4 +23,5 @@ class CustomerViewSet(viewsets.ModelViewSet):
         # get customer order from two other apis
         json = customer.get_formatted_data()
         serializer = PackInfoSerializer(data=json)
+        serializer.is_valid()
         return Response(serializer.data)
